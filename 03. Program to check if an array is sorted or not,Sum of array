@@ -1,0 +1,52 @@
+Method 1:Program to check if an array is sorted or not
+
+
+public class Main
+{
+    static boolean arrSorted(int arr[],int n){
+        if(n==0||n==1)
+        return true;
+        
+        if(arr[n-1]<arr[n-2]){
+            return false;
+        }
+        return arrSorted(arr,n-1);
+    
+    }
+	public static void main(String[] args) {
+		int arr[]={34,45,56,89,90};
+		int n=arr.length;
+		arrSorted(arr,n);
+		if(arrSorted(arr,n)){
+		    System.out.println("Yes");
+		}else{
+		    System.out.println("No");
+		}
+	}
+}
+
+
+**************************************************************************************************************************************************************************
+
+Method 3:Sum of array
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    int arr[]={45,23,78,90,12};
+	    int size=arr.length;
+	    
+		System.out.println(getSum(arr,size-1));
+	}
+	
+	public static int getSum(int arr[],int size){
+	    if(size==0)
+	    return 0;
+	    if(size==1)
+	    return arr[0];
+	    
+	    return arr[0]+getSum(arr,size-1);
+	}
+	
+}
