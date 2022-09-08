@@ -1,0 +1,25 @@
+Method 1:
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+	    int d=sc.nextInt();
+		System.out.println(count(n,d));
+	}
+	
+	public static int count(int n,int d){
+	    System.out.println(n);
+	    if(n==d){
+	        System.out.println("pahuch gya");
+	        return 0;
+	    }
+	   n++;
+	   
+	   return count(n,d);
+	   
+	}
+}
