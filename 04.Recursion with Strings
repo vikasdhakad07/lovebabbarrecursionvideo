@@ -19,3 +19,33 @@ public class Main
 	    }
 	}
 }
+
+
+************************************************************************************************************************************************************************
+
+Method 2:Check Palindrome or Not
+
+
+public class Main
+{
+	public static void main(String[] args) {
+	    String str="vikiv";
+	   if(reverse(str)){
+	       System.out.println("Palindrome");
+	   }
+	   else{
+	       System.out.println("Not Palindrome");
+	   }
+	}
+	
+	static boolean reverse(String str){
+	    
+	    if(str.length()==0||str.length()==1)
+	   return true;
+	   if(str.charAt(0)==str.charAt(str.length()-1))
+	   
+	   return reverse(str.substring(1, str.length()-1));
+	   
+	   return false;
+	}
+}
