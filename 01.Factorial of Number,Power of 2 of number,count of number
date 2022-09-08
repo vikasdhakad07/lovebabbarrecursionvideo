@@ -42,3 +42,30 @@ public class Main
 	}
 }
 
+
+***********************************************************************************************************************************************************************
+
+Method:3 count of number
+
+
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner sc=new Scanner(System.in);
+	    int n=sc.nextInt();
+		System.out.println(count(n));
+	}
+	
+	public static int count(int n){
+	    if(n==0){
+	        return 0;
+	    }
+	    else{
+	         System.out.println(n);
+	       return count(n-1);
+	      
+	    }
+	}
+}
+
