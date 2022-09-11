@@ -1,0 +1,22 @@
+Method:Subset Sums
+Expected Time Complexity: O(2N)
+Expected Auxiliary Space: O(2N)
+
+class Solution{
+    void fun(int ind,int sum,ArrayList<Integer> arr,int N,ArrayList<Integer> al){
+        if(ind==N){
+            al.add(sum);
+            return;
+        }
+        
+        fun(ind+1,sum+arr.get(ind),arr,N,al);
+        fun(ind+1,sum,arr,N,al);
+    }
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
+        // code here
+        ArrayList<Integer> al=new ArrayList<>();
+        fun(0,0,arr,N,al);
+        Collections.sort(al);
+        return al;
+    }
+}
