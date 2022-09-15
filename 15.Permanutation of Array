@@ -1,4 +1,4 @@
-Method:Permanutation of Array
+Method 1:Permanutation of Array
 
 
 class Solution {
@@ -24,6 +24,41 @@ class Solution {
         List<Integer> ds=new ArrayList<>();
         boolean freq[]=new boolean[nums.length];
         permanutations(nums,ds,ans,freq);
+        return ans;
+    }
+}
+
+
+************************************************************************************************************************************************************************
+Method 2:Permanutation of Array
+
+
+class Solution {
+    
+    private void permanutation(int ind,int nums[],List<List<Integer>> ans){
+        if(ind==nums.length){
+            List<Integer> ds=new ArrayList<>();
+            for(int i=0;i<nums.length;i++){
+            ds.add(nums[i]);
+        }
+            ans.add(new ArrayList<Integer>(ds));
+            return;
+    }
+        for(int i=ind;i<nums.length;i++){
+            swap(i,ind,nums);
+                permanutation(ind+1,nums,ans);
+            swap(i,ind,nums);
+        }
+    }
+        private void swap(int i,int j,int nums[]){
+            int t=nums[i];
+            nums[i]=nums[j];
+            nums[j]=t;
+        }
+    
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> ans=new ArrayList<>();
+        permanutation(0,nums,ans);
         return ans;
     }
 }
