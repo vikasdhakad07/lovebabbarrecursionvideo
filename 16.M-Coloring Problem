@@ -1,0 +1,39 @@
+Method:M-Coloring Problem
+
+
+class solve {
+    // Function to determine if graph can be coloured with at most M colours
+    // such
+    // that no two adjacent vertices of graph are coloured with same colour.
+    public boolean graphColoring(boolean graph[][], int m, int n) {
+        // Your code here
+        int color[]=new int[n];
+        Arrays.fill(color,-1);
+        return solve(0,graph,m,n,color);
+    }
+    
+    public boolean isSafe(boolean graph[][],int curve,int assign,int color[]){
+        for(int i=0;i<graph.length;i++){
+            if(graph[curve][i]&&color[i]==assign){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public boolean solve(int curve,boolean graph[][],int m,int V,int color[]){
+        if(curve==V){
+            return true;
+        }
+        for(int i=0;i<m;i++){
+            if(isSafe(graph,curve,i,color)){
+                color[curve]=i;
+            if(solve(curve+1,graph,m,V,color)){
+                return true;
+            }
+                color[curve]=-1;
+            }
+        }
+        return false;
+    }
+}
