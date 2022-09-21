@@ -1,0 +1,21 @@
+Method:Subset of unique elements in array
+
+
+class Solution {
+    public void fun(int nums[],int i,List<Integer> res,List<List<Integer>> list){
+        if(i==nums.length){
+            list.add(new ArrayList<>(res));
+            return;
+        }
+        res.add(nums[i]);
+        fun(nums,i+1,res,list);
+        res.remove(res.size()-1);
+        fun(nums,i+1,res,list);
+        
+    }
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> list=new ArrayList<>();
+        fun(nums,0,new ArrayList(),list);
+        return list;
+    }
+}
