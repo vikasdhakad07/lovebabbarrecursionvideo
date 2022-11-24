@@ -1,0 +1,28 @@
+Method 1: Finding Profession
+
+
+class Solution{
+    static char profession(int level, int pos){
+        // code here
+        if(pos==1){
+            return 'e';
+        }
+        
+        if(profession(level-1, (pos+1)/2)=='e'){
+            if(pos%2==1){
+                return 'e';
+            }
+            else{
+                return 'd';
+            }
+        }
+        else{
+            if(pos%2==1){
+                return 'd';
+            }
+            else{
+                return 'e';
+            }
+        }
+    }
+}
