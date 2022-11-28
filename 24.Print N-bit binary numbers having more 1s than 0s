@@ -1,0 +1,28 @@
+Method 1:Print N-bit binary numbers having more 1s than 0s
+
+
+class Solution {
+    ArrayList<String> al=new ArrayList<>();
+    ArrayList<String> NBitBinary(int N) {
+        // code here
+        binaryNos("",0,0,N);
+        return al;
+    }
+    
+    void binaryNos(String s, int zero, int one, int N){
+        if((zero+one)==N){
+            if(s.charAt(0)!='0'&&one>=zero){
+                al.add(s);
+            }
+            return;
+        }
+        
+        if(one<zero){
+            return;
+        }
+        
+        binaryNos(s+"1",zero,one+1,N);
+        binaryNos(s+"0",zero+1,one,N);
+        
+    }
+}
