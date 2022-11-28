@@ -1,0 +1,41 @@
+Method 1:Find Maximum of a array using recursion
+
+
+public class Main
+{
+	 public static void main(String[] args) {
+        //   code here
+        int arr[]={1,2,3,4,5};
+        int n=arr.length;
+        System.out.print(print(arr,n));
+    }
+    
+    static int print(int arr[], int n){
+       
+       if(n == 1)
+        return arr[0];
+         
+        return Math.Max(arr[n-1], print(arr, n-1));
+    }
+}
+
+
+Method 2: Find Minimum of a array using recursion
+
+public class Main
+{
+	 public static void main(String[] args) {
+        //   code here
+        int arr[]={1,2,3,4,5};
+        int n=arr.length;
+        System.out.print(print(arr,n));
+    }
+    
+    static int print(int arr[], int n){
+       
+       if(n == 1)
+        return arr[0];
+         
+        return Math.min(arr[n-1], print(arr, n-1));
+    }
+}
