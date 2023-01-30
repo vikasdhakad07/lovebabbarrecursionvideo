@@ -1,0 +1,32 @@
+Method 01:Predict the Winner
+
+
+class Solution {
+
+    int solve(int al[], int i, int j){
+        if(i>j){
+            return 0;
+        }
+
+        if(i==j){
+            return al[i];
+        }
+
+        int op1=al[i]+Math.min(solve(al,i+2,j),solve(al,i+1,j-1));
+        int op2=al[j]+Math.min(solve(al,i,j-2),solve(al,i+1,j-1));
+        return Math.max(op1,op2);
+    }
+    public boolean PredictTheWinner(int[] nums) {
+        int p1Score=solve(nums, 0,nums.length-1);
+        int preScore=0;
+        for(int i=0;i<nums.length;i++){
+            preScore+=nums[i];
+        }
+
+        int p2Score=preScore-p1Score;
+        if(p1Score>=p2Score){
+            return true;
+        }
+        return false;
+    }
+}
