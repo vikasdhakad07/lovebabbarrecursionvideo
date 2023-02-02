@@ -1,0 +1,27 @@
+Method 01:Maximum Consecutive Ones
+
+
+
+class Solution {
+    public static int longestOnes(int n, int[] nums, int k) {
+        // code here
+        int i=0;
+        int countz=0;
+        int max=0;
+        for(int j=0;j<n;j++){
+            if(nums[j]==0){
+                countz++;
+            }
+            while(countz>k){
+                if(nums[i]==0){
+                countz--;
+                }
+                 i++;
+            }
+           
+            max=Math.max(max, j-i+1);
+        }
+        return max;
+    }
+}
+    
