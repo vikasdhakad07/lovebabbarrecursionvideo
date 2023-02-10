@@ -21,3 +21,41 @@ public class Main
 	    }
 	}
 }
+
+
+
+Method 02: Permutations of a given string
+
+
+class Solution {
+    
+    public void permutation(int index, String S, List<String> ans){
+        if(index==S.length()){
+            if(!ans.contains(S)){
+                ans.add(S);
+                return;
+            }
+        }
+        
+        for(int j=index;j<S.length();j++){
+            S=swap(j,index,S);
+            permutation(index+1, S, ans);
+            S=swap(j, index, S);
+        }
+    }
+    
+    public String swap(int i,int j, String S){
+        char ch[]=S.toCharArray();
+        char c=ch[i];
+        ch[i]=ch[j];
+        ch[j]=c;
+        return String.valueOf(ch);
+    }
+    public List<String> find_permutation(String S) {
+        // Code here
+        List<String> ans=new ArrayList<>();
+        permutation(0, S, ans);
+        Collections.sort(ans);
+        return ans;
+    }
+}
