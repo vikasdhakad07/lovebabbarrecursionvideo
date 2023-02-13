@@ -1,0 +1,29 @@
+Method 01:Generate Parentheses
+
+
+class Solution {
+    public List<String> generateParenthesis(int n) {
+       List<String> li=new ArrayList<>();
+        Fun(n, "",li,0,0);
+       return li;
+    }
+
+    void Fun(int size, String ans, List<String> list, int open, int close){
+        if(open==close&&close==size){
+            list.add(ans);
+            return;
+        }
+
+        if(open==close){
+            Fun(size, ans+"(",list,open+1,close);
+        }
+
+        else if(open>close&&open<size){
+            Fun(size, ans+"(",list,open+1,close);
+            Fun(size, ans+")",list,open,close+1);
+        }
+        else if(open==size&&close<size){
+            Fun(size, ans+")",list,open,close+1);
+        }
+    }
+}
