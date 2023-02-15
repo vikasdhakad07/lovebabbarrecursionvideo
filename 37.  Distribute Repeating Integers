@@ -1,0 +1,31 @@
+Method 01:  Distribute Repeating Integers
+
+
+class Solution {
+    public boolean canDistribute(int[] nums, int[] quantity) {
+        var map=new HashMap<Integer, Integer>();
+        for(int i:nums)  map.put(i,map.getOrDefault(i,0)+1);
+
+        int j=0;
+        int cnt[]=new int[map.size()];
+        for(int i:map.values())
+        cnt[j++]=i;
+
+        Arrays.sort(quantity);
+        return getDis(quantity.length-1, cnt, quantity);
+    }
+
+    public boolean getDis(int at, int cnt[], int quantity[]){
+        if(at<0) return true;
+
+        for(int i=0;i<cnt.length;i++){
+            if(cnt[i]>=quantity[at]){
+                cnt[i]-=quantity[at];
+                if(getDis(at-1, cnt, quantity)) return true;
+                cnt[i]+=quantity[at];
+            }   
+        }
+
+        return false;
+    }
+}
