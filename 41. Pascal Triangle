@@ -1,0 +1,17 @@
+Method 01: Pascal Triangle
+
+
+class Solution {
+    ArrayList<Long> nthRowOfPascalTriangle(int n) {
+        // code here
+          ArrayList<Long> a=new ArrayList<>();
+          long ans=1, mod=(long)1e9+7;
+          for(int i=0;i<n;i++){
+              a.add(ans);
+              for(int j=i-1;j>=1;j--){
+                  a.set(j,(a.get(j)+a.get(j-1))%mod);
+              }
+          }
+          return a;
+    }
+}
