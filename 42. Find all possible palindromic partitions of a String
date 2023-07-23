@@ -1,0 +1,49 @@
+Method 01: Find all possible palindromic partitions of a String
+
+
+class Solution {
+    static ArrayList<ArrayList<String>> allPalindromicPerms(String S) {
+        // code here
+        ArrayList<String> list=new ArrayList<>();
+        ArrayList<ArrayList<String>> ans=new ArrayList<>();
+        findPalin(S,list,ans,0);
+        return ans;
+    }
+    
+   public static void findPalin(String S,ArrayList<String> list,ArrayList<ArrayList<String>> ans,int index){
+       
+       if(index==S.length()){
+           ans.add(new ArrayList<>(list));
+           return;
+       }
+       
+       String temp="";
+       for(int i=index;i<S.length();i++){
+           temp+=S.charAt(i);
+           if(isPalin(temp)){
+           list.add(temp);
+           findPalin(S,list,ans,i+1);
+           list.remove(list.size()-1);
+       }
+       } 
+   }
+   
+   public static boolean isPalin(String s){
+       int n=s.length();
+       if(n<2){
+           return true;
+       }
+       
+       int start=0;
+       int end=s.length()-1;
+       
+       while(start<end){
+           if(s.charAt(start)!=s.charAt(end)){
+               return false;
+           }
+           start++;
+           end--;
+       }
+       return true;
+   }
+}
