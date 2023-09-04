@@ -1,0 +1,39 @@
+Method 01: Replace O's with X's
+
+
+class Solution{
+    static char[][] fill(int n, int m, char a[][])
+    {
+        // code here
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if((i==0||i==n-1||j==0||j==m-1)&&a[i][j]=='O'){
+                dfs(a,i,j);
+                }
+            }
+        }
+        
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(a[i][j]!='k'){
+                    a[i][j]='X';
+                }
+                else{
+                    a[i][j]='O';
+                }
+            }
+        }
+        return a;
+    }
+    
+    static void dfs(char a[][],int i,int j){
+        if(i<0||j<0||i>=a.length||j>=a[0].length||a[i][j]!='O')
+        return;
+            a[i][j]='k';
+            dfs(a,i+1,j);
+            dfs(a,i-1,j);
+            dfs(a,i,j+1);
+            dfs(a,i,j-1);
+    }
+}
